@@ -36,7 +36,7 @@ dotnet --version
 
 This project was tested using Windows 10 though should also work using windows 11
 - to install wsl open a command prompt and type
-  ```
+```sh
 wsl --install
 ```
 
