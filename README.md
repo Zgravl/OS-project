@@ -30,6 +30,13 @@ To check if you have .NET installed, run:
 
 ```sh
 dotnet --version
+```
 
-## Environment setup
+## Environment Setup
+
+This project was tested using Windows 10 though should also work using windows 11
+- to install wsl open a command prompt and type
+  ```
+wsl --install
+```
 
