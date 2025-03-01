@@ -3,16 +3,19 @@ using System.Threading;
 
 public class BankAccount
 {
+    // Properties for account balance and name
     public int Balance { get; set; }
     public string AccountName { get; set; }
-    private readonly object balanceLock = new object();
+    private readonly object balanceLock = new object(); // Lock object for thread safety
 
+    // Constructor to initialize account details
     public BankAccount(string accountName, int balance)
     {
         AccountName = accountName;
         Balance = balance;
     }
 
+    // Method to deposit money into the account
     public void Deposit(int amount)
     {
         lock (balanceLock)
@@ -23,6 +26,7 @@ public class BankAccount
         }
     }
 
+    // Method to withdraw money from the account)
     public void Withdraw(int amount)
     {
         lock (balanceLock)
@@ -46,12 +50,12 @@ class Program
     static BankAccount account1 = new BankAccount("Account1", 1000);
     static BankAccount account2 = new BankAccount("Account2", 1000);
 
-    // Number of threads for parallel computation
+    // Number of threads for parallel
     static int numberOfThreads = 10;
     static int[] numbers = new int[1000];
     static int[] squaredNumbers = new int[1000];
 
-    // Deadlock detection and handling method
+    // Method to attempt acquiring locks on two objects to prevent deadlock
     static bool TryAcquireLocks(object lock1, object lock2)
     {
         bool lock1Acquired = false;
@@ -59,13 +63,13 @@ class Program
 
         try
         {
-            lock1Acquired = Monitor.TryEnter(lock1, TimeSpan.FromSeconds(1));
+            lock1Acquired = Monitor.TryEnter(lock1, TimeSpan.FromSeconds(1)); // Try acquiring first lock
             if (lock1Acquired)
             {
-                lock2Acquired = Monitor.TryEnter(lock2, TimeSpan.FromSeconds(1));
+                lock2Acquired = Monitor.TryEnter(lock2, TimeSpan.FromSeconds(1)); // Try acquiring second lock
                 if (!lock2Acquired)
                 {
-                    Monitor.Exit(lock1);  // Release lock1 if lock2 is not acquired
+                    Monitor.Exit(lock1);  // Release first lock if second is not acquired
                 }
             }
         }
@@ -77,7 +81,7 @@ class Program
         return lock1Acquired && lock2Acquired;
     }
 
-    // Perform deadlock resolution with timeout and lock acquisition management
+    // Method to simulate bank transactions while avoiding deadlocks
     static void DeadlockResolution()
     {
         Thread thread1 = new Thread(() =>
@@ -130,7 +134,7 @@ class Program
         thread2.Join();
     }
 
-    // Thread-safe method to perform parallel computation (e.g., squaring numbers)
+    // Method to perform parallel computation of squaring numbers using threads
     static void PerformComputation(int startIndex, int endIndex, int threadIndex)
     {
         Console.WriteLine($"Thread {threadIndex} started...");
@@ -143,18 +147,18 @@ class Program
 
     static void Main(string[] args)
     {
-        // Initialize the numbers array for parallel computation
+        // Initialize the numbers array for parallel
         for (int i = 0; i < numbers.Length; i++)
         {
-            numbers[i] = i + 1;  // Array values from 1 to 1000
+            numbers[i] = i + 1
         }
 
-        // Part 1: Parallel Computation (Squaring numbers with 10 threads)
+        //Parallel Computation (Squaring numbers with 10 threads)
         Console.WriteLine("Performing Parallel Computation with 10 Threads...");
         Thread[] threads = new Thread[numberOfThreads];
         int chunkSize = numbers.Length / numberOfThreads;
 
-        // Create and start 10 threads for parallel computation
+        // Create and start 10 threads for parallel
         for (int i = 0; i < numberOfThreads; i++)
         {
             int startIndex = i * chunkSize;
@@ -178,7 +182,7 @@ class Program
             Console.WriteLine(squaredNumbers[i]);
         }
 
-        // Part 2: Simulate Bank Operations with Deadlock Detection and Resolution
+        //Simulate Bank Operations with Deadlock Detection and Resolution
         Console.WriteLine("\nDeadlock Detection and Resolution:");
         DeadlockResolution();
     }
