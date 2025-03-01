@@ -24,6 +24,13 @@ Ensure you have the following installed before running the projects:
 - **.NET 8 SDK** (Required for building and running C# applications)  
   [Download .NET 8 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
 
+- **Update packages and install .NET SDK**
+  you can also install the SDK by putting the following into the terminal
+```
+sudo apt update && sudo apt upgrade -y
+sudo apt install dotnet-sdk-8.0 -y
+``
+
 - **Windows Subsystem for Linux (WSL)** (Optional, if using Linux through WSL)
 
 To check if you have .NET installed, run:
