@@ -29,7 +29,7 @@ Ensure you have the following installed before running the projects:
 ```
 sudo apt update && sudo apt upgrade -y
 sudo apt install dotnet-sdk-8.0 -y
-``
+```
 
 - **Windows Subsystem for Linux (WSL)** (Optional, if using Linux through WSL)
 
