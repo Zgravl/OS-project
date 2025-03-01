@@ -39,4 +39,19 @@ This project was tested using Windows 10 though should also work using windows 1
 ```sh
 wsl --install
 ```
-
+- to open up the wsl terminal hit the windows key + r and type "wsl"
+  **Project A:**
+- to run multithreading.cs, download the file and place it into an empty folder
+- open a wsl terminal and go to the directory by typing 
+```sh
+cd (insert path to the folder)
+```
+- be aware of the differences in linux and windows file paths
+- after you are in the correct directory build the project by typing
+```sh
+dotnet build
+```
+- then run the project by typing
+```
+dotnet run
+```
