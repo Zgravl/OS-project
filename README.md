@@ -28,7 +28,7 @@ Ensure you have the following installed before running the projects:
 
 To check if you have .NET installed, run:
 
-```sh
+```
 dotnet --version
 ```
 
@@ -43,15 +43,32 @@ wsl --install
   **Project A:**
 - to run multithreading.cs, download the file and place it into an empty folder
 - open a wsl terminal and go to the directory by typing 
-```sh
+```
 cd (insert path to the folder)
 ```
 - be aware of the differences in linux and windows file paths
 - after you are in the correct directory build the project by typing
-```sh
+```
 dotnet build
 ```
 - then run the project by typing
 ```
 dotnet run
+```
+
+**Project B**
+- to run IPC.cs, download the file and place it into an empty folder
+- open two wsl terminals and go to the correct in both directory by typing
+```
+cd (insert path to the folder)
+```
+- be aware of the differences in linux and windows file paths
+- after you are in the correct directory build the project by typing in both terminals
+```
+dotnet build
+```
+- you run the program the same as project A but putting producer or consumer next to it and
+  doing the same in the second terminal putting producer is you put consumer for the first one and vice versa
+```
+dotnet run (producer or consumer)
 ```
